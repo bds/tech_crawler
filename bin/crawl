@@ -1,0 +1,47 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+
+Options = Struct.new(:size)
+
+class Parser
+  def self.parse(options)
+    args = Options.new("10")
+
+    opt_parser = OptionParser.new do |opts|
+      opts.banner = "Usage: crawl [options]"
+
+      opts.on("--size [SIZE]", ['10', '50', '1k', '1M'],
+              "Select crawl size (10, 50, 1k, 1M)") do |s|
+
+        args.size = s
+      end
+
+      opts.on("-h", "--help", "Prints this help") do
+        puts opts
+        exit
+      end
+    end
+
+    opt_parser.parse!(options)
+    return args
+  end
+end
+
+options = Parser.parse(ARGV)
+
+url_file = case options.size
+  when "10" then "alexa10.txt"
+  when "50" then "alexa50.txt"
+  when "1k" then "alexa1k.txt"
+  when "1M" then "alexa1M.txt"
+end
+
+require "bundler/setup"
+require "tech_crawler"
+
+domains = IO.read("lib/tech_crawler/urls/#{url_file}").split
+logger  = Logger.new($stdout)
+
+puts "Starting crawl of #{options.size} domains..."
+TechCrawler::Crawler.new(domains, logger).call!
