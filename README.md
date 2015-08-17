@@ -46,6 +46,11 @@ Or install it yourself as:
 
 ## Usage
 
+```
+Usage: crawl [options]
+        --size [SIZE]                Select crawl size (10, 50, 1k, 1M)
+    -h, --help                       Prints this help
+```
 
 ## Development
 
