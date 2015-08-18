@@ -1,6 +1,6 @@
 # TechCrawler
 
-Crawl a list of domains and attempts to detect technologies used.
+Crawl a list of domains and attempt to detect technologies used.
 
 `TechCrawler` uses a plugin system, located in `lib/tech_crawler/plugins`,
 where each plugin must respond to `#call` and return a `boolean` whether a
@@ -21,12 +21,10 @@ with the following defaults:
  - Request gzip encoding of responses
  - Accept cookies
  - A Firefox user-agent header which may run afoul of [proper scraping etiquette](http://meta.stackexchange.com/a/446).
- - `max_concurrency` is currently hard-coded at 20 in `lib/tech_crawler/crawler.rb`.
+* `max_concurrency` is currently hard-coded at 20 in `lib/tech_crawler/crawler.rb`.
   *Things will get flakey if you try to make too many requests at the same time. [The built in limit is 200](https://github.com/typhoeus/typhoeus#specifying-max-concurrency).*
- - Unit tests for each plugin are located in `spec/plugins`
- - Integration tests for each plugin are located in `spec/crawler`. NOTE: The
-test subject is currently `TechCrawler::Crawler` however it should be
-`TechCrawler::Request`.
+* Unit tests for each plugin are located in `spec/plugins`
+* Integration tests for each plugin are located in `spec/crawler`
 
 ## Installation
 
@@ -66,4 +64,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
