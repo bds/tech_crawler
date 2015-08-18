@@ -10,7 +10,7 @@ module TechCrawler
     def initialize(attrs = {})
       @followlocation = attrs.fetch(:followlocation) { true }
       @accept_encoding = attrs.fetch(:accept_encoding) { 'gzip' }
-      @timeout = attrs.fetch(:timout) { 5 }
+      @timeout = attrs.fetch(:timout) { 10 }
       @ssl_verifyhost = attrs.fetch(ssl_verifyhost) { 0 }
       @headers = attrs.fetch(:headers) do
         {
