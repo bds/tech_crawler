@@ -11,7 +11,7 @@ request to the root path of the domain, ex. google.com. For a given domain
 this will generate at most 1 HTTP request for `N` plugins.
 
 If a technology is not detected on the root path of the domain, an additional
-request is generated for each plugin that responds to `#path`, generatigin at
+request is generated for each plugin that responds to `#path`, generating at
 most 1 request per plugin/path.
 
 ## Technical notes and caveats
